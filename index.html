@@ -3,70 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avyon | Cloud Security & GRC for B2B SaaS</title>
+    <title>Avyon | Enterprise Cloud Security & GRC Advisory</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --text-color: #c9d1d9;
-            --accent-color: #58a6ff;
-            --card-bg: #161b22;
-            --alert-red: #f85149;
-            --audit-green: #3fb950;
+            --bg-main: #fafafa;
+            --bg-card: #ffffff;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --border: #e5e7eb;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: rgba(13, 17, 23, 0.9); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 90%; top: 0; z-index: 1000; border-bottom: 1px solid #21262d; }
-        .logo { font-size: 24px; font-weight: bold; color: #fff; letter-spacing: 1px; }
-        .container { max-width: 1000px; margin: 120px auto 60px auto; padding: 0 20px; }
-        .hero { text-align: center; padding: 60px 0; }
-        h1 { font-size: 48px; color: #fff; margin-bottom: 20px; font-weight: 800; }
-        h1 span { color: var(--accent-color); }
-        .subtitle { font-size: 20px; max-width: 700px; margin: 0 auto 40px auto; color: #8b949e; }
-        .cta-btn { background-color: var(--accent-color); color: #fff; padding: 15px 30px; font-size: 16px; font-weight: bold; border: none; border-radius: 6px; text-decoration: none; display: inline-block; transition: background 0.2s; }
-        .cta-btn:hover { background-color: #1f6feb; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 60px 0; }
-        .card { background-color: var(--card-bg); padding: 30px; border-radius: 8px; border: 1px solid #21262d; }
-        .card h3 { margin-top: 0; color: #fff; font-size: 22px; }
-        .red-text { color: var(--alert-red); font-weight: bold; }
-        .green-text { color: var(--audit-green); font-weight: bold; }
-        .badge { display: inline-block; background: #21262d; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; color: #8b949e; margin-bottom: 15px; }
-        .footer-banner { text-align: center; background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 50px; border-radius: 8px; border: 1px solid #30363d; margin-top: 60px; }
-        footer { text-align: center; padding: 40px 0; color: #8b949e; font-size: 14px; border-top: 1px solid #21262d; }
-        @media (max-width: 768px) { h1 { font-size: 32px; } .grid { grid-template-columns: 1fr; } }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        /* Navigation */
+        header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 84%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+        .cta-nav { background: var(--primary); color: #fff; padding: 10px 22px; font-size: 14px; font-weight: 600; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+        .cta-nav:hover { background: var(--accent); }
+
+        .container { max-width: 1100px; margin: 160px auto 80px auto; padding: 0 24px; }
+        
+        /* Hero Section */
+        .hero { text-align: center; max-width: 800px; margin: 0 auto 80px auto; }
+        .badge { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 24px; letter-spacing: 0.5px; }
+        h1 { font-size: 46px; color: var(--primary); margin-bottom: 24px; font-weight: 800; line-height: 1.15; letter-spacing: -1px; }
+        .subtitle { font-size: 19px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.5; }
+        
+        /* Section Styling */
+        section { margin-bottom: 90px; }
+        .section-title { text-align: center; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 48px; position: relative; }
+        
+        /* Grid Layouts */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        
+        .card { background: var(--bg-card); padding: 40px 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .card h3 { margin: 0 0 16px 0; font-size: 20px; font-weight: 700; color: var(--primary); }
+        .card p { margin: 0; color: var(--text-muted); font-size: 15px; }
+
+        /* Frameworks List */
+        .framework-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+        .tag { background: #fff; border: 1px solid var(--border); padding: 8px 20px; border-radius: 6px; font-weight: 600; font-size: 14px; color: var(--primary); }
+
+        /* Bottom Banner */
+        .cta-banner { background: var(--primary); color: #fff; padding: 60px 40px; border-radius: 8px; text-align: center; }
+        .cta-banner h2 { font-size: 32px; font-weight: 700; margin: 0 0 16px 0; }
+        .cta-banner p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto 32px auto; }
+        .cta-main { background: var(--accent); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+        .cta-main:hover { background: #1d4ed8; }
+
+        footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 80px; }
+        
+        @media (max-width: 768px) { 
+            header { width: 84%; padding: 20px 8%; }
+            h1 { font-size: 32px; } 
+            .grid-3, .grid-2 { grid-template-columns: 1fr; } 
+            .container { margin-top: 120px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">AV&Upsilon;ON</div>
-        <div><a href="mailto:contact@avyon.net" class="cta-btn" style="padding: 10px 20px; font-size: 14px;">Contact Expert</a></div>
+        <div class="logo">AVYON</div>
+        <div><a href="mailto:contact@avyon.net" class="cta-nav">Consult an Expert</a></div>
     </header>
 
     <div class="container">
+        
+        <!-- Hero -->
         <section class="hero">
-            <span class="badge">GLOBAL GRC & CLOUD SECURITY CONSULTING</span>
-            <h1>We Turn <span>Red Dashboards</span><br>Into Clean Audits.</h1>
-            <p class="subtitle">Helping Seed to Series A B2B SaaS startups navigate SOC 2 and ISO 27001 compliance framework engineering without distracting your developers.</p>
-            <a href="mailto:contact@avyon.net?subject=10-Minute Dashboard Review" class="cta-btn">Get a 10-Minute Dashboard Review</a>
+            <span class="badge">Global Cloud Security & GRC Advisory</span>
+            <h1>Audit-Ready Infrastructure.<br>Enterprise-Grade Security.</h1>
+            <p class="subtitle">Avyon engineers robust cloud environments and architectural controls that satisfy rigorous global compliance frameworks, clear enterprise procurement roadblocks, and protect your critical assets.</p>
+            <a href="mailto:contact@avyon.net?subject=Enterprise Security Inquiry" class="cta-main">Schedule an Advisory Call</a>
         </section>
 
-        <section class="grid">
-            <div class="card">
-                <h3>The Reality of Automated GRC</h3>
-                <p>You bought <span class="red-text">Vanta</span> or <span class="red-text">Drata</span>, hooked up your cloud accounts, and are now staring at an overwhelming dashboard full of failing tests.</p>
-                <p>Automation platforms tell you <em>what</em> is broken, but they don't fix it. Your engineering team shouldn't be losing weeks figuring out security policies or resolving false positives.</p>
-            </div>
-            <div class="card">
-                <h3>The Work Behind the Checkbox</h3>
-                <p>We've spent years inside enterprise cloud infrastructures. We architect IAM roles, remediate deep CVE configurations, harden complex multi-account AWS/GCP environments, and translate complex compliance mandates into plain-English controls engineers actually respect.</p>
-                <p><span class="green-text">Fixed Scope. Fixed Price. Done in 4 to 6 weeks.</span></p>
+        <!-- Core Capabilities -->
+        <section>
+            <div class="section-title">Our Capabilities</div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Cloud Architecture & Hardening</h3>
+                    <p>Deep-tier engineering for AWS, Azure, and GCP environments. We architect rigorous IAM structures, resolve systemic configuration vulnerabilities, and secure multi-account perimeters.</p>
+                </div>
+                <div class="card">
+                    <h3>Compliance Engineering</h3>
+                    <p>Translating complex frameworks into functional infrastructure controls. We build the operational evidence and technical baselines required to successfully pass strict institutional audits.</p>
+                </div>
+                <div class="card">
+                    <h3>GRC Optimization</h3>
+                    <p>Whether deploying modern compliance automation compliance platforms (Vanta, Drata, etc.) or structuring bespoke security programs, we eliminate operational noise and dashboard friction.</p>
+                </div>
             </div>
         </section>
 
-        <section class="footer-banner">
-            <h2>Stuck on a failing control right now?</h2>
-            <p style="font-size: 18px; color: #8b949e; max-width: 600px; margin: 0 auto 30px auto;">Message us. We'll tell you in 10 minutes whether your roadblock is a quick 5-minute configuration tweak or a genuine architectural gap.</p>
-            <a href="mailto:contact@avyon.net?subject=10-Minute Dashboard Review" class="cta-btn" style="background-color: #21262d; border: 1px solid #30363d;">Email contact@avyon.net</a>
+        <!-- Value Prop / Engagement Model -->
+        <section class="grid-2">
+            <div>
+                <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">The Engineering Behind the Checkbox</h2>
+                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 20px;">Compliance isn't just an administrative exercise; it's an engineering standard. Avyon provides specialized technical advisors who embed with your goals to remediate architectural gaps directly.</p>
+                <p style="color: var(--text-muted); font-size: 16px;">We deliver institutional-grade security programs under clear, fixed-scope engagements designed to let your internal development teams remain focused on core product engineering.</p>
+            </div>
+            <div class="card" style="background: #f8fafc;">
+                <h3 style="color: var(--accent); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Engagement Model</h3>
+                <h4 style="font-size: 24px; margin: 0 0 16px 0; color: var(--primary);">Bespoke Solutions. Predictable Outcomes.</h4>
+                <p style="margin-bottom: 12px;"><strong>Scope:</strong> Full Gap Analysis, Architectural Remediating, Evidence Generation.</p>
+                <p style="margin-bottom: 12px;"><strong>Timeline:</strong> Accelerated 4–6 week deployment pipelines.</p>
+                <p><strong>Pricing:</strong> Transparent, fixed-fee execution with zero hidden retainers.</p>
+            </div>
         </section>
+
+        <!-- Global Frameworks -->
+        <section style="text-align: center;">
+            <div class="section-title">Supported Frameworks</div>
+            <div class="framework-tags">
+                <div class="tag">SOC 2 (Type I & II)</div>
+                <div class="tag">ISO/IEC 27001</div>
+                <div class="tag">HIPAA Security</div>
+                <div class="tag">CIS Benchmarks</div>
+                <div class="tag">NIST CSF</div>
+                <div class="tag">GDPR Privacy</div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta-banner">
+            <h2>Accelerate Your Institutional Trust</h2>
+            <p>Struggling with a complex security questionnaire or stuck on a critical framework control? Connect directly with an international cybersecurity advisor today.</p>
+            <a href="mailto:contact@avyon.net?subject=Advisory Request" class="cta-main">Email contact@avyon.net</a>
+        </section>
+
     </div>
 
     <footer>

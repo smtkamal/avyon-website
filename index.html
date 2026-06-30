@@ -5,96 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avyon | Enterprise Cloud Security, Secure AI & GRC Advisory</title>
     
-    <!-- Animate On Scroll (AOS) Animations CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
     <style>
         :root {
-            --bg-main: #fafafa;
-            --bg-card: #ffffff;
-            --text-main: #111827;
-            --text-muted: #4b5563;
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --border: #e5e7eb;
+            --bg-main: #090d16;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #ffffff;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        /* Step 2: Advanced Glassmorphic Navigation Bar */
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Ambient Glow Blobs */
+        .glow-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Advanced Glassmorphic Navigation Bar */
         header { 
-            background: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(9, 13, 22, 0.7); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
             padding: 20px 8%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             position: fixed; 
-            width: 84%; 
+            width: 100%; 
             top: 0; 
             z-index: 1000; 
-            border-bottom: 1px solid rgba(229, 231, 235, 0.5); 
+            border-bottom: 1px solid var(--border); 
         }
-        .logo { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-decoration: none; }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .logo { font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-link { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .nav-link:hover { color: var(--primary); }
-        .cta-nav { background: var(--primary); color: #fff; padding: 10px 22px; font-size: 14px; font-weight: 600; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
-        .cta-nav:hover { background: var(--accent); }
+        .nav-link:hover { color: var(--accent); }
+        .cta-nav { background: #fff; color: #000; padding: 10px 20px; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; }
+        .cta-nav:hover { background: var(--accent); color: #fff; box-shadow: 0 0 15px var(--accent-glow); }
 
-        .container { max-width: 1100px; margin: 180px auto 80px auto; padding: 0 24px; }
+        .container { max-width: 1150px; margin: 200px auto 100px auto; padding: 0 24px; position: relative; }
         
         /* Hero Section */
-        .hero { text-align: center; max-width: 800px; margin: 0 auto 100px auto; }
-        .badge { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 24px; letter-spacing: 0.5px; }
-        h1 { font-size: 46px; color: var(--primary); margin-bottom: 24px; font-weight: 800; line-height: 1.15; letter-spacing: -1px; }
-        .subtitle { font-size: 19px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.5; }
+        .hero { text-align: center; max-width: 850px; margin: 0 auto 120px auto; position: relative; }
+        .badge { display: inline-block; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 16px; border-radius: 9999px; font-size: 12px; font-weight: 600; color: #60a5fa; margin-bottom: 28px; letter-spacing: 1px; text-transform: uppercase; }
+        h1 { font-size: 54px; color: var(--primary); margin-bottom: 24px; font-weight: 800; line-height: 1.15; letter-spacing: -1.5px; }
+        .subtitle { font-size: 19px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto; }
         
         /* Section Styling */
-        section { margin-bottom: 100px; scroll-margin-top: 120px; }
-        .section-title { text-align: center; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 48px; position: relative; }
+        section { margin-bottom: 120px; scroll-margin-top: 140px; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 56px; letter-spacing: -0.5px; }
         
         /* Grid Layouts */
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
         
-        .card { background: var(--bg-card); padding: 40px 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        .card h3 { margin: 0 0 16px 0; font-size: 20px; font-weight: 700; color: var(--primary); }
-        .card p { margin: 0; color: var(--text-muted); font-size: 15px; }
+        /* Premium Card Styling */
+        .card { 
+            background: var(--bg-card); 
+            padding: 44px 34px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border); 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .card:hover { 
+            transform: translateY(-4px); 
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.1); 
+        }
+        .card h3 { margin: 0 0 16px 0; font-size: 21px; font-weight: 700; color: var(--primary); letter-spacing: -0.3px; }
+        .card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
         /* Frameworks List */
         .framework-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
-        .tag { background: #fff; border: 1px solid var(--border); padding: 8px 20px; border-radius: 6px; font-weight: 600; font-size: 14px; color: var(--primary); }
+        .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 10px 22px; border-radius: 8px; font-weight: 500; font-size: 14px; color: #e5e7eb; transition: all 0.2s; }
+        .tag:hover { background: rgba(59, 130, 246, 0.1); border-color: var(--accent); color: #fff; }
 
-        /* Step 1: Sleek Inbound Lead Capture Form Styling */
-        .form-container { background: var(--bg-card); border: 1px solid var(--border); padding: 50px 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); max-width: 650px; margin: 0 auto; }
+        /* Sleek Lead Capture Form */
+        .form-container { background: rgba(11, 17, 30, 0.8); border: 1px solid var(--border); padding: 50px 40px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); max-width: 680px; margin: 0 auto; }
         .form-group { margin-bottom: 24px; text-align: left; }
-        .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 6px; font-size: 15px; box-sizing: border-box; background-color: #f9fafb; font-family: inherit; transition: all 0.2s; }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); background-color: #fff; box-shadow: 0 0 0 4px #dbeafe; }
-        .form-submit-btn { width: 100%; background: var(--primary); color: #fff; padding: 14px; font-size: 16px; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
-        .form-submit-btn:hover { background: var(--accent); }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #9ca3af; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; box-sizing: border-box; background-color: rgba(255,255,255,0.02); color: #fff; font-family: inherit; transition: all 0.2s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); background-color: rgba(255,255,255,0.05); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
+        .form-group select option { background-color: #090d16; color: #fff; }
+        .form-submit-btn { width: 100%; background: #fff; color: #000; padding: 16px; font-size: 15px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-submit-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 20px var(--accent-glow); }
 
-        /* Step 5: Monetization / Fixed Offer Placement */
-        .pricing-box { background: #f8fafc; border: 2px solid var(--accent); position: relative; }
-        .pricing-badge { position: absolute; top: -14px; left: 30px; background: var(--accent); color: white; padding: 4px 12px; font-size: 12px; font-weight: 700; border-radius: 9999px; text-transform: uppercase; }
-        .price-tag { font-size: 36px; font-weight: 800; color: var(--primary); margin: 15px 0; }
-        .price-tag span { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+        /* Engagement Box Highlight */
+        .pricing-box { border: 1px solid rgba(59, 130, 246, 0.3); position: relative; background: radial-gradient(ellipse at top right, rgba(59,130,246,0.1), transparent); }
+        .pricing-badge { position: absolute; top: -12px; left: 30px; background: var(--accent); color: white; padding: 4px 14px; font-size: 11px; font-weight: 700; border-radius: 9999px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .cta-banner { background: var(--primary); color: #fff; padding: 60px 40px; border-radius: 8px; text-align: center; }
-        .cta-banner h2 { font-size: 32px; font-weight: 700; margin: 0 0 16px 0; }
-        .cta-banner p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto 32px auto; }
-        .cta-main { background: var(--accent); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; text-decoration: none; display: inline-block; transition: background 0.2s; border: none; cursor: pointer; }
-        .cta-main:hover { background: #1d4ed8; }
+        .cta-main { background: #fff; color: #000; padding: 16px 36px; font-size: 15px; font-weight: 700; border-radius: 6px; text-decoration: none; display: inline-block; transition: all 0.2s; border: none; cursor: pointer; }
+        .cta-main:hover { background: var(--accent); color: #fff; box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
 
-        footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 80px; }
+        /* Calendly Embed Styling Tweaks */
+        .calendar-wrap { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        footer { text-align: center; padding: 50px 0; color: #4b5563; font-size: 14px; border-top: 1px solid var(--border); margin-top: 100px; }
         
         @media (max-width: 768px) { 
-            header { width: 84%; padding: 20px 8%; }
-            h1 { font-size: 32px; } 
+            header { width: 100%; padding: 20px 5%; }
+            .nav-links { display: none; } /* Mobile basic fallback */
+            h1 { font-size: 38px; } 
             .grid-3, .grid-2 { grid-template-columns: 1fr; } 
-            .container { margin-top: 140px; }
+            .container { margin-top: 150px; }
             .form-container { padding: 30px 20px; }
         }
     </style>
@@ -112,16 +156,15 @@
     </header>
 
     <div class="container">
+        <div class="glow-blob"></div>
         
-        <!-- Hero Section -->
         <section class="hero" data-aos="fade-up">
             <span class="badge">Global Security, Custom Automation & GRC Advisory</span>
             <h1>Audit-Ready Infrastructure.<br>Secure AI & Automation.</h1>
-            <p class="subtitle">Avyon builds secure-by-design software, compliant AI automations, and hardened cloud systems that protect your critical assets while satisfying rigorous global compliance frameworks.</p>
+            <p class="subtitle">Avyon builds secure-by-design software, compliant AI automations, and hardened cloud environments that protect your critical assets while satisfying rigorous global compliance frameworks.</p>
             <a href="#book" class="cta-main">Schedule an Advisory Call</a>
         </section>
 
-        <!-- Core Capabilities Section -->
         <section id="capabilities">
             <div class="section-title" data-aos="fade-up">Our Capabilities</div>
             <div class="grid-3">
@@ -140,28 +183,25 @@
             </div>
         </section>
 
-        <!-- Value Prop / Engagement Model & Payments -->
         <section id="engagement" class="grid-2">
             <div data-aos="fade-right">
-                <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">The Engineering Behind the Checkbox</h2>
-                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 20px;">Modern tech infrastructure demands more than administrative policies. Avyon provides specialized technical advisors who write the code, secure the data pipelines, and directly remediate architectural gaps.</p>
-                <p style="color: var(--text-muted); font-size: 16px;">We deliver institutional-grade security programs, resilient software, and smart automation systems under clear, fixed-scope engagements designed to let your core team focus on scaling business value.</p>
+                <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px;">The Engineering Behind the Checkbox</h2>
+                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 20px; line-height: 1.7;">Modern tech infrastructure demands more than administrative policies. Avyon provides specialized technical advisors who write the code, secure the data pipelines, and directly remediate architectural gaps.</p>
+                <p style="color: var(--text-muted); font-size: 16px; line-height: 1.7;">We deliver institutional-grade security programs, resilient software, and smart automation systems under clear, fixed-scope engagements designed to let your core team focus on scaling business value.</p>
             </div>
             
-            <!-- Step 5: Stripe Fixed Price Entry Point Option -->
             <div class="card pricing-box" data-aos="fade-left">
-                <div class="pricing-badge">Popular Entry Point</div>
-                <h3 style="color: var(--accent); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Cloud Architecture Audit</h3>
-                <h4 style="font-size: 22px; margin: 0; color: var(--primary);">Full Gap Analysis & Roadmap</h4>
-                <div class="price-tag">$500 <span>/ Fixed One-Time Deposit</span></div>
-                <p style="margin-bottom: 12px; font-size: 14px;"><strong>Includes:</strong> Full IAM review, perimeter configuration scan, and a custom 4-week automated compliance roadmap.</p>
+                <div class="pricing-badge">Engagement Model</div>
+                <h3 style="color: var(--accent); font-size: 15px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Strategic Architecture</h3>
+                <h4 style="font-size: 22px; margin: 0; color: var(--primary);">Bespoke Solutions. Predictable Outcomes.</h4>
+                <div style="font-size: 22px; font-weight: 700; margin: 20px 0 10px 0; color: #fff;">Fixed-Scope Execution</div>
+                <p style="margin-bottom: 16px; font-size: 15px; color: var(--text-muted); line-height: 1.6;">We eliminate the friction of unpredictable billing. Every engagement starts with a comprehensive gap analysis and a transparent, milestone-driven roadmap customized to your specific tech stack.</p>
+                <p style="margin-bottom: 20px; font-size: 14px; color: #e5e7eb;"><strong>Timeline:</strong> Rapid 4–6 week high-impact deployment pipelines.</p>
                 
-                <!-- PASTE YOUR STRIPE CHECKOUT LINK INSIDE href="..." BELOW -->
-                <a href="#" target="_blank" class="cta-main" style="width: 100%; text-align: center; box-sizing: border-box; margin-top: 10px;">Initiate Secure Audit</a>
+                <a href="#book" class="cta-main" style="width: 100%; text-align: center; box-sizing: border-box; display: block;">Request Architecture Briefing</a>
             </div>
         </section>
 
-        <!-- Global Frameworks Section -->
         <section style="text-align: center;" data-aos="fade-up">
             <div class="section-title">Supported Frameworks & Standards</div>
             <div class="framework-tags">
@@ -174,25 +214,22 @@
             </div>
         </section>
 
-        <!-- Step 4: Calendly Embed Booking Widget Section -->
         <section id="book" style="text-align: center;" data-aos="fade-up">
             <div class="section-title">Schedule an Infrastructure Review</div>
             <p style="color: var(--text-muted); max-width: 600px; margin: -20px auto 40px auto; font-size: 17px;">Select a timeslot below to align with an enterprise solutions architecture specialist instantly.</p>
             
-            <!-- START CALENDLY EMBED CODE -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/contact-avyon/30min" style="min-width:320px;height:700px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            <!-- END CALENDLY EMBED CODE -->
+            <div class="calendar-wrap">
+                <div class="calendly-inline-widget" data-url="https://calendly.com/contact-avyon/30min" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                </div>
         </section>
 
-        <!-- Step 1: Web3Forms Inbound Lead Capture Section -->
         <section id="contact" style="text-align: center;" data-aos="fade-up">
             <div class="section-title">Initiate an Engagement Briefing</div>
             <p style="color: var(--text-muted); max-width: 600px; margin: -20px auto 40px auto; font-size: 17px;">Have a specific pipeline automation requirement or strict compliance milestone? Send your parameters securely.</p>
             
             <div class="form-container">
                 <form action="https://api.web3forms.com/submit" method="POST">
-                    <!-- PASTE YOUR WEB3FORMS ACCESS KEY DIRECTLY BELOW -->
                     <input type="hidden" name="access_key" value="85581e7d-c085-4fc9-835b-4ecd6373b8a7">
                     <input type="hidden" name="subject" value="New High-Value Avyon Lead Generated">
                     <input type="checkbox" name="botcheck" id="" style="display: none;">
@@ -234,13 +271,12 @@
         <p>&copy; 2026 Avyon LLC. All rights reserved. Providing Professional Cybersecurity & Software Consulting Internationally.</p>
     </footer>
 
-    <!-- Animate On Scroll (AOS) Animation Script Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800, // Speed of animation (800ms)
-            once: true,    // Run animation only once when scrolling down
-            offset: 100    // Start animating when element is 100px close to screen view
+            duration: 800, 
+            once: true,    
+            offset: 80    
         });
     </script>
 

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avyon | Enterprise Cloud Security & GRC Advisory</title>
+    <title>Avyon | Enterprise Cloud Security, Secure AI & GRC Advisory</title>
+    
+    <!-- Animate On Scroll (AOS) Animations CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
     <style>
         :root {
             --bg-main: #fafafa;
@@ -15,24 +18,40 @@
             --accent: #2563eb;
             --border: #e5e7eb;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        /* Navigation */
-        header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 84%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
-        .logo { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+        /* Step 2: Advanced Glassmorphic Navigation Bar */
+        header { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            padding: 20px 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            width: 84%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5); 
+        }
+        .logo { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-decoration: none; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover { color: var(--primary); }
         .cta-nav { background: var(--primary); color: #fff; padding: 10px 22px; font-size: 14px; font-weight: 600; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
         .cta-nav:hover { background: var(--accent); }
 
-        .container { max-width: 1100px; margin: 160px auto 80px auto; padding: 0 24px; }
+        .container { max-width: 1100px; margin: 180px auto 80px auto; padding: 0 24px; }
         
         /* Hero Section */
-        .hero { text-align: center; max-width: 800px; margin: 0 auto 80px auto; }
+        .hero { text-align: center; max-width: 800px; margin: 0 auto 100px auto; }
         .badge { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 24px; letter-spacing: 0.5px; }
         h1 { font-size: 46px; color: var(--primary); margin-bottom: 24px; font-weight: 800; line-height: 1.15; letter-spacing: -1px; }
         .subtitle { font-size: 19px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.5; }
         
         /* Section Styling */
-        section { margin-bottom: 90px; }
+        section { margin-bottom: 100px; scroll-margin-top: 120px; }
         .section-title { text-align: center; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 48px; position: relative; }
         
         /* Grid Layouts */
@@ -48,11 +67,25 @@
         .framework-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
         .tag { background: #fff; border: 1px solid var(--border); padding: 8px 20px; border-radius: 6px; font-weight: 600; font-size: 14px; color: var(--primary); }
 
-        /* Bottom Banner */
+        /* Step 1: Sleek Inbound Lead Capture Form Styling */
+        .form-container { background: var(--bg-card); border: 1px solid var(--border); padding: 50px 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); max-width: 650px; margin: 0 auto; }
+        .form-group { margin-bottom: 24px; text-align: left; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 6px; font-size: 15px; box-sizing: border-box; background-color: #f9fafb; font-family: inherit; transition: all 0.2s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); background-color: #fff; box-shadow: 0 0 0 4px #dbeafe; }
+        .form-submit-btn { width: 100%; background: var(--primary); color: #fff; padding: 14px; font-size: 16px; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
+        .form-submit-btn:hover { background: var(--accent); }
+
+        /* Step 5: Monetization / Fixed Offer Placement */
+        .pricing-box { background: #f8fafc; border: 2px solid var(--accent); position: relative; }
+        .pricing-badge { position: absolute; top: -14px; left: 30px; background: var(--accent); color: white; padding: 4px 12px; font-size: 12px; font-weight: 700; border-radius: 9999px; text-transform: uppercase; }
+        .price-tag { font-size: 36px; font-weight: 800; color: var(--primary); margin: 15px 0; }
+        .price-tag span { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+
         .cta-banner { background: var(--primary); color: #fff; padding: 60px 40px; border-radius: 8px; text-align: center; }
         .cta-banner h2 { font-size: 32px; font-weight: 700; margin: 0 0 16px 0; }
         .cta-banner p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto 32px auto; }
-        .cta-main { background: var(--accent); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; text-decoration: none; display: inline-block; transition: background 0.2s; }
+        .cta-main { background: var(--accent); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; text-decoration: none; display: inline-block; transition: background 0.2s; border: none; cursor: pointer; }
         .cta-main:hover { background: #1d4ed8; }
 
         footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 80px; }
@@ -61,87 +94,155 @@
             header { width: 84%; padding: 20px 8%; }
             h1 { font-size: 32px; } 
             .grid-3, .grid-2 { grid-template-columns: 1fr; } 
-            .container { margin-top: 120px; }
+            .container { margin-top: 140px; }
+            .form-container { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">AVYON</div>
-        <div><a href="mailto:contact@avyon.net" class="cta-nav">Consult an Expert</a></div>
+        <a href="#" class="logo">AVYON</a>
+        <div class="nav-links">
+            <a href="#capabilities" class="nav-link">Capabilities</a>
+            <a href="#engagement" class="nav-link">Model</a>
+            <a href="#book" class="nav-link">Book a Call</a>
+            <a href="#contact" class="cta-nav">Get Started</a>
+        </div>
     </header>
 
     <div class="container">
         
-        <!-- Hero -->
-        <section class="hero">
-            <span class="badge">Global Cloud Security & GRC Advisory</span>
-            <h1>Audit-Ready Infrastructure.<br>Enterprise-Grade Security.</h1>
-            <p class="subtitle">Avyon engineers robust cloud environments and architectural controls that satisfy rigorous global compliance frameworks, clear enterprise procurement roadblocks, and protect your critical assets.</p>
-            <a href="mailto:contact@avyon.net?subject=Enterprise Security Inquiry" class="cta-main">Schedule an Advisory Call</a>
+        <!-- Hero Section -->
+        <section class="hero" data-aos="fade-up">
+            <span class="badge">Global Security, Custom Automation & GRC Advisory</span>
+            <h1>Audit-Ready Infrastructure.<br>Secure AI & Automation.</h1>
+            <p class="subtitle">Avyon builds secure-by-design software, compliant AI automations, and hardened cloud systems that protect your critical assets while satisfying rigorous global compliance frameworks.</p>
+            <a href="#book" class="cta-main">Schedule an Advisory Call</a>
         </section>
 
-        <!-- Core Capabilities -->
-        <section>
-            <div class="section-title">Our Capabilities</div>
+        <!-- Core Capabilities Section -->
+        <section id="capabilities">
+            <div class="section-title" data-aos="fade-up">Our Capabilities</div>
             <div class="grid-3">
-                <div class="card">
-                    <h3>Cloud Architecture & Hardening</h3>
-                    <p>Deep-tier engineering for AWS, Azure, and GCP environments. We architect rigorous IAM structures, resolve systemic configuration vulnerabilities, and secure multi-account perimeters.</p>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Secure Custom Software</h3>
+                    <p>Deep-tier engineering for cloud-native applications. We develop scalable software systems, secure API frameworks, and rock-solid codebases engineered with institutional-grade perimeters from day one.</p>
                 </div>
-                <div class="card">
-                    <h3>Compliance Engineering</h3>
-                    <p>Translating complex frameworks into functional infrastructure controls. We build the operational evidence and technical baselines required to successfully pass strict institutional audits.</p>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Compliant AI & Automation</h3>
+                    <p>Designing secure enterprise chatbots, sandboxed language model workflows, and custom backend automations. We supercharge your processes while ensuring absolute data governance and compliance.</p>
                 </div>
-                <div class="card">
-                    <h3>GRC Optimization</h3>
-                    <p>Whether deploying modern compliance automation compliance platforms (Vanta, Drata, etc.) or structuring bespoke security programs, we eliminate operational noise and dashboard friction.</p>
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Cloud Security & GRC</h3>
+                    <p>Translating complex frameworks into strict architectural controls. From AWS/GCP hardening to compliance automation platform deployment (Vanta, Drata), we eliminate audit friction completely.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Value Prop / Engagement Model -->
-        <section class="grid-2">
-            <div>
+        <!-- Value Prop / Engagement Model & Payments -->
+        <section id="engagement" class="grid-2">
+            <div data-aos="fade-right">
                 <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">The Engineering Behind the Checkbox</h2>
-                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 20px;">Compliance isn't just an administrative exercise; it's an engineering standard. Avyon provides specialized technical advisors who embed with your goals to remediate architectural gaps directly.</p>
-                <p style="color: var(--text-muted); font-size: 16px;">We deliver institutional-grade security programs under clear, fixed-scope engagements designed to let your internal development teams remain focused on core product engineering.</p>
+                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 20px;">Modern tech infrastructure demands more than administrative policies. Avyon provides specialized technical advisors who write the code, secure the data pipelines, and directly remediate architectural gaps.</p>
+                <p style="color: var(--text-muted); font-size: 16px;">We deliver institutional-grade security programs, resilient software, and smart automation systems under clear, fixed-scope engagements designed to let your core team focus on scaling business value.</p>
             </div>
-            <div class="card" style="background: #f8fafc;">
-                <h3 style="color: var(--accent); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Engagement Model</h3>
-                <h4 style="font-size: 24px; margin: 0 0 16px 0; color: var(--primary);">Bespoke Solutions. Predictable Outcomes.</h4>
-                <p style="margin-bottom: 12px;"><strong>Scope:</strong> Full Gap Analysis, Architectural Remediating, Evidence Generation.</p>
-                <p style="margin-bottom: 12px;"><strong>Timeline:</strong> Accelerated 4–6 week deployment pipelines.</p>
-                <p><strong>Pricing:</strong> Transparent, fixed-fee execution with zero hidden retainers.</p>
+            
+            <!-- Step 5: Stripe Fixed Price Entry Point Option -->
+            <div class="card pricing-box" data-aos="fade-left">
+                <div class="pricing-badge">Popular Entry Point</div>
+                <h3 style="color: var(--accent); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Cloud Architecture Audit</h3>
+                <h4 style="font-size: 22px; margin: 0; color: var(--primary);">Full Gap Analysis & Roadmap</h4>
+                <div class="price-tag">$500 <span>/ Fixed One-Time Deposit</span></div>
+                <p style="margin-bottom: 12px; font-size: 14px;"><strong>Includes:</strong> Full IAM review, perimeter configuration scan, and a custom 4-week automated compliance roadmap.</p>
+                
+                <!-- PASTE YOUR STRIPE CHECKOUT LINK INSIDE href="..." BELOW -->
+                <a href="#" target="_blank" class="cta-main" style="width: 100%; text-align: center; box-sizing: border-box; margin-top: 10px;">Initiate Secure Audit</a>
             </div>
         </section>
 
-        <!-- Global Frameworks -->
-        <section style="text-align: center;">
-            <div class="section-title">Supported Frameworks</div>
+        <!-- Global Frameworks Section -->
+        <section style="text-align: center;" data-aos="fade-up">
+            <div class="section-title">Supported Frameworks & Standards</div>
             <div class="framework-tags">
                 <div class="tag">SOC 2 (Type I & II)</div>
                 <div class="tag">ISO/IEC 27001</div>
                 <div class="tag">HIPAA Security</div>
                 <div class="tag">CIS Benchmarks</div>
                 <div class="tag">NIST CSF</div>
-                <div class="tag">GDPR Privacy</div>
+                <div class="tag">GDPR Privacy & AI Governance</div>
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section class="cta-banner">
-            <h2>Accelerate Your Institutional Trust</h2>
-            <p>Struggling with a complex security questionnaire or stuck on a critical framework control? Connect directly with an international cybersecurity advisor today.</p>
-            <a href="mailto:contact@avyon.net?subject=Advisory Request" class="cta-main">Email contact@avyon.net</a>
+        <!-- Step 4: Calendly Embed Booking Widget Section -->
+        <section id="book" style="text-align: center;" data-aos="fade-up">
+            <div class="section-title">Schedule an Infrastructure Review</div>
+            <p style="color: var(--text-muted); max-width: 600px; margin: -20px auto 40px auto; font-size: 17px;">Select a timeslot below to align with an enterprise solutions architecture specialist instantly.</p>
+            
+            <!-- START CALENDLY EMBED CODE -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/contact-avyon/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- END CALENDLY EMBED CODE -->
+        </section>
+
+        <!-- Step 1: Web3Forms Inbound Lead Capture Section -->
+        <section id="contact" style="text-align: center;" data-aos="fade-up">
+            <div class="section-title">Initiate an Engagement Briefing</div>
+            <p style="color: var(--text-muted); max-width: 600px; margin: -20px auto 40px auto; font-size: 17px;">Have a specific pipeline automation requirement or strict compliance milestone? Send your parameters securely.</p>
+            
+            <div class="form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <!-- PASTE YOUR WEB3FORMS ACCESS KEY DIRECTLY BELOW -->
+                    <input type="hidden" name="access_key" value="85581e7d-c085-4fc9-835b-4ecd6373b8a7">
+                    <input type="hidden" name="subject" value="New High-Value Avyon Lead Generated">
+                    <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+                    <div class="form-group">
+                        <label for="name">Full Name / Key Executive</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Corporate Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@enterprise.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Primary Area of Interest</label>
+                        <select id="service" name="service_required" required>
+                            <option value="" disabled selected>Select an architecture stream...</option>
+                            <option value="Secure AI & Automation">Secure AI & Chatbot Automation</option>
+                            <option value="Custom Software Engineering">Secure Cloud-Native Software</option>
+                            <option value="GRC & Compliance Automation">GRC Roadmap (SOC 2, ISO 27001)</option>
+                            <option value="Full Architecture Overhaul">Full Infrastructure Audit & Hardening</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Infrastructure Brief / Project Scope</label>
+                        <textarea id="message" name="project_scope" rows="5" placeholder="Detail your tech stack, timeline goals, or target compliance frameworks here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit-btn">Transmit Secure Engagement Form</button>
+                </form>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2020 Avyon LLC. All rights reserved. Providing Professional Cybersecurity Consulting Internationally.</p>
+        <p>&copy; 2026 Avyon LLC. All rights reserved. Providing Professional Cybersecurity & Software Consulting Internationally.</p>
     </footer>
+
+    <!-- Animate On Scroll (AOS) Animation Script Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Speed of animation (800ms)
+            once: true,    // Run animation only once when scrolling down
+            offset: 100    // Start animating when element is 100px close to screen view
+        });
+    </script>
 
 </body>
 </html>
